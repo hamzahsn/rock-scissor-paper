@@ -121,18 +121,18 @@ module.exports = {
     IS_DEV && new webpack.ProgressPlugin(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'React Typescript Number division',
+      title: 'Rock-scissor-paper game ❤️',
       template: paths.src + '/index.html',
       filename: 'index.html',
       inject: 'body'
     }),
     IS_DEV && new BundleAnalyzerPlugin(),
-    // !IS_DEV &&
-    //   new BrotliPlugin({
-    //     test: /\.(js|css|html|svg)$/,
-    //     threshold: 10240,
-    //     minRatio: 0.8
-    //   }),
+    !IS_DEV &&
+      new BrotliPlugin({
+        test: /\.(js|css|html|svg)$/,
+        threshold: 10240,
+        minRatio: 0.8
+      }),
     new Dotenv({
       path: paths.root + '/.env',
       safe: true,
