@@ -1,0 +1,13 @@
+* {
+  box-sizing: border-box; }
+
+html,
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+body {
+  font-family: sans-serif;
+  color: #0f0c29; }

@@ -1,0 +1,18 @@
+* {
+  box-sizing: border-box;
+}
+
+$font-stack: sans-serif;
+
+html,
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body {
+  font-family: $font-stack;
+  color: #0f0c29;
+}
