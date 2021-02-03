@@ -1,0 +1,33 @@
+.weaponContainer {
+  display: flex;
+}
+
+.weaponImagesContainer {
+  width: 100px;
+  height: 100px;
+  font-size: 18px;
+  color: #fff;
+  border-radius: 50%;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.weaponImagesContainer:last-child {
+  margin-right: 0;
+}
+
+.weaponImage {
+  transform: scale(0.8);
+}
+
+@media screen and (max-width: 1110px) {
+  .weaponImagesContainer {
+    width: 70px;
+    height: 70px;
+    font-size: 18px;
+  }
+
+  .weaponImage {
+    transform: scale(0.6);
+  }
+}
