@@ -4,10 +4,22 @@
 html,
 body {
   height: 100vh;
+  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center; }
 
 body {
   font-family: sans-serif;
-  color: #0f0c29; }
+  background-color: #9921e8;
+  background-image: linear-gradient(315deg, #9921e8 0%, #5f72be 74%); }
+
+.gamesContainer {
+  display: flex; }
+
+@media screen and (max-width: 1110px) {
+  .gamesContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto; } }
