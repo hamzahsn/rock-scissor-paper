@@ -1,0 +1,29 @@
+.userResultsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  cursor: pointer;
+  background: white;
+  border: 10px solid #9921e8;
+  overflow: hidden; }
+
+.userHandImage {
+  transform: scale(0.7); }
+
+@media screen and (max-width: 1110px) {
+  .userResultsContainer {
+    width: 150px;
+    height: 150px; }
+  .userHandImage {
+    transform: scale(0.5); } }
+
+@media screen and (max-width: 830px) {
+  .userResultsContainer {
+    width: 100px;
+    height: 100px; }
+  .userHandImage {
+    transform: scale(0.5); } }
