@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import Paper from '../../assets/paper.svg'
 import styles from './ComputerHandResults.scss'
@@ -11,34 +11,56 @@ import { setComputerHandResult, setScore } from '../../store/actions/actions'
 
 export const ComputerHandResults: React.FC = () => {
   const dispatch = useDispatch()
-  const game = useSelector((state: RootState) => state)
+  const game = useSelector((state: RootState) => state.game)
   const { weapon, launchGame } = useRenderRandomWeapon()
+  const [finishRender, setFinishRender] = useState(false)
+
+  useLayoutEffect(() => {
+    if (game.players.user.name === 'Computer') {
+      if (!game.startPlay) {
+        dispatch(setComputerHandResult(weapon))
+        setFinishRender(true)
+      }
+    }
+  }, [weapon])
+
+  useEffect(() => {
+    if (finishRender) {
+      if (!game.startPlay) {
+        dispatch(setScore(game.players.user.weapon, game.players.computer.weapon))
+        setFinishRender(false)
+      }
+    }
+  }, [game.players.computer.weapon, game.players.user.weapon, finishRender, setFinishRender, game.startPlay, dispatch])
+
+  //################################################################
 
   useEffect(() => {
     //@ts-ignore
     dispatch(setComputerHandResult(weapon))
-  }, [game?.game?.startPlay, weapon])
+  }, [game?.startPlay, weapon])
 
   useEffect(() => {
-    if (game?.game?.startPlay) {
+    if (game?.startPlay) {
       launchGame()
     }
 
-    if (!game?.game?.startPlay && game.game.players.user.name !== 'Computer') {
+    if (!game?.startPlay && game.players.user.name !== 'Computer') {
       //@ts-ignore
-      dispatch(setScore(game.game.players.user.weapon, weapon))
+      dispatch(setScore(game.players.user.weapon, weapon))
     }
-  }, [game?.game?.startPlay, dispatch])
+  }, [game?.startPlay, dispatch])
 
-  const RenderIconWhenComputerVsComputer = () => {
+  // ################################################################
+  const RenderComputerWeaponIcons = () => {
     return (
       <img
         src={
-          game.game.players.computer.weapon === 0
+          game.players.computer.weapon === 0
             ? Rock
-            : game.game.players.computer.weapon === -1
+            : game.players.computer.weapon === -1
             ? Paper
-            : game.game.players.computer.weapon === 1
+            : game.players.computer.weapon === 1
             ? Scissor
             : Question
         }
@@ -49,24 +71,9 @@ export const ComputerHandResults: React.FC = () => {
     )
   }
 
-  const RenderIconWhenUserVsComputer = () => {
-    return (
-      <img
-        src={weapon === 0 ? Rock : weapon === -1 ? Paper : weapon === 1 ? Scissor : Question}
-        alt="weapon"
-        data-testid="weapon-image"
-        className={styles.computerHandImage}
-      />
-    )
-  }
-
   return (
     <div className={styles.computerResultsContainer}>
-      {game.game.players.user.name === 'Computer' ? (
-        <RenderIconWhenComputerVsComputer />
-      ) : (
-        <RenderIconWhenUserVsComputer />
-      )}
+      <RenderComputerWeaponIcons />
     </div>
   )
 }
