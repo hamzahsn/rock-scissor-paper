@@ -9,6 +9,7 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 const Dotenv = require('dotenv-webpack')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const BrotliPlugin = require('brotli-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const IS_DEV = process.env.NODE_ENV !== 'production'
 const targets = IS_DEV ? { chrome: '79', firefox: '72' } : '> 0.25%, not dead'
@@ -112,6 +113,9 @@ module.exports = {
     ]
   },
   plugins: [
+    new CopyWebpackPlugin({
+      patterns: [{ from: paths.root + '/public/*' }]
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new MiniCssExtractPlugin({
       filename: IS_DEV ? 'styles/[name].css' : 'styles/[name].[fullhash].css',
