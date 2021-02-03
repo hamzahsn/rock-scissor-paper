@@ -19,7 +19,7 @@
       "jsx": true
     }
   },
-  "plugins": ["react", "prettier", "@typescript-eslint/eslint-plugin"],
+  "plugins": ["react", "prettier", "@typescript-eslint/eslint-plugin", "react-hooks"],
   "settings": {
     "react": {
       "version": "detect"
@@ -43,6 +43,9 @@
     "@typescript-eslint/no-var-requires": 0,
     "@typescript-eslint/explicit-member-accessibility": 0,
     "@typescript-eslint/no-empty-interface": 0,
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "@typescript-eslint/ban-ts-comment": 0,
     "@typescript-eslint/naming-convention": [
       "error",
       {
