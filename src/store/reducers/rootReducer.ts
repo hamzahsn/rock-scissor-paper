@@ -8,10 +8,8 @@ import {
   SET_WEAPON,
   SET_SCORE,
   SET_ROUND_NUMBER,
-  SET_PREVIOUS_GAMES,
   END_GAME
 } from '../actions/actionTypes'
-import storage from 'redux-persist/lib/storage'
 
 const weapons = {
   rock: 0,
@@ -126,13 +124,6 @@ const rootReducer = (state: IGameRock | undefined = initialState, action: GameAc
             }
           }
         }
-        // previousGames: {
-        //   ...state.previousGames,
-        //   previousGames: state.previousGames.concat({
-        //     computer: state.game.players.user.score,
-        //     user: state.game.players.user.score
-        //   })
-        // }
       }
     case SET_ROUND_NUMBER:
       return {
@@ -143,34 +134,10 @@ const rootReducer = (state: IGameRock | undefined = initialState, action: GameAc
         }
       }
     // TODO  here set previous games
-    // case SET_PREVIOUS_GAMES:
-    //   return {
-    //     ...state,
-    //     previousGames: {
-    //       ...state.previousGames,
-    //       previousGames: state.previousGames.push()
-    //     }
-    //   }
-    // case SET_PREVIOUS_GAMES:
-    //   return {
-    //     ...state,
-    //     previousGames: {
-    //       ...state.previousGames,
-    //       computer: {
-    //         ...state.previousGames.computer,
-    //         computer: state.previousGames.computer + 1
-    //       },
-    //       user: {
-    //         ...state.previousGames.user,
-    //         user: state.previousGames.user + 1
-    //       }
-    //     }
-    //   }
     case END_GAME:
       return { ...initialState }
-    // TODO clearing storae
+    // TODO clearing storage
     // return storage.removeItem('persist:root')
-
     default:
       return state
   }

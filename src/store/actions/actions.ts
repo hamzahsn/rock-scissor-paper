@@ -46,11 +46,7 @@ export function setComputerHandResult(weapon: number): GameActionTypes {
 }
 
 export function setScore(firstPlayer: number, secondPlayer: number): GameActionTypes {
-  console.log('\x1b[43m firstPlayer ' + firstPlayer)
-  console.log('\x1b[43m secondPlayer ' + secondPlayer)
   const results = calculateWinner(firstPlayer, secondPlayer)
-  console.log('\x1b[43m results ' + results)
-  console.log('\x1b[43m FROM SET SCORE', 'FIRST PLAYER', firstPlayer, 'SECOND PLAYER', secondPlayer)
   return {
     type: SET_SCORE,
     payload: results

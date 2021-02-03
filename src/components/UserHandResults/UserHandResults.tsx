@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../../store/store'
 import styles from './UserHandResults.scss'
@@ -7,22 +7,24 @@ import Rock from '../../assets/rock.svg'
 import Scissor from '../../assets/scissors.svg'
 import Question from '../../assets/question.svg'
 import { useRenderRandomWeapon } from '../../hooks/useRanderRandomWeapon'
-import { setScore } from '../../store/actions/actions'
+import { setWeapon } from '../../store/actions/actions'
 
 export const UserHandResults: React.FC = () => {
   const { weapon, launchGame } = useRenderRandomWeapon()
   const game = useSelector((state: RootState) => state?.game)
   const dispatch = useDispatch()
 
-  React.useEffect(() => {
-    if (game.players.user.name === 'Computer' && game.startPlay) {
-      launchGame()
-    }
+  useEffect(() => {
+    if (game.players.user.name === 'Computer') {
+      if (game.startPlay) {
+        launchGame()
+      }
 
-    if (!game.startPlay && game.players.user.name === 'Computer') {
-      dispatch(setScore(weapon, game.players.computer.weapon))
+      if (game.startPlay === false) {
+        dispatch(setWeapon(weapon))
+      }
     }
-  }, [game.players.user.name, game.players.computer.weapon, game.startPlay])
+  }, [game.startPlay, game.players.user.name])
 
   const RenderUserIcon = () => {
     return (

@@ -10,12 +10,12 @@ export const Game: React.FC = () => {
   return (
     <div className={styles.gameContainer}>
       <div className={styles.firstPlayerContainer}>
-        <PlayerInfo player={game?.game?.players?.user} />
+        <PlayerInfo player={game.game.players.user} />
         <UserHandResults />
       </div>
       <SelectContender />
       <div className={styles.secondPlayerContainer}>
-        <PlayerInfo player={game?.game?.players?.computer} />
+        <PlayerInfo player={game.game.players.computer} />
         <ComputerHandResults />
       </div>
     </div>

@@ -1,11 +1,9 @@
-// GAME STEPS
-
 export const START_GAME = 'START_GAME'
 export const FINISH_ROUND = 'FINISH_ROUND'
 export const SET_COMPUTER_HAND_RESULT = 'SET_COMPUTER_HAND_RESULT'
 export const SET_SCORE = 'SET_SCORE'
-export const SET_ROUND_NUMBER = 'SET_ROUND_NUMBER' //
-export const SET_PREVIOUS_GAMES = 'SET_PREVIOUS_GAMES' //
+export const SET_ROUND_NUMBER = 'SET_ROUND_NUMBER'
+export const SET_PREVIOUS_GAMES = 'SET_PREVIOUS_GAMES'
 
 export const RESTART_GAME = 'RESTART_GAME'
 export const END_GAME = 'END_GAME'
@@ -64,7 +62,7 @@ interface ISetComputerHandResult {
 
 interface ISetScore {
   type: typeof SET_SCORE
-  payload: any
+  payload: number
 }
 
 interface ISetRoundNumber {
@@ -75,6 +73,7 @@ interface ISetRoundNumber {
 interface ISetPreviousGames {
   type: typeof SET_PREVIOUS_GAMES
 }
+
 interface IEndGame {
   type: typeof END_GAME
 }
