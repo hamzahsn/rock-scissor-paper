@@ -1,0 +1,50 @@
+$form-data-margin: 10px 10px;
+
+.base {
+  font-size: 19px;
+  margin: $form-data-margin;
+  width: 12vw;
+  max-width: 280px;
+  overflow: hidden;
+  border: none;
+  cursor: pointer;
+
+  &.primary {
+    color: inherit;
+    height: 50px;
+  }
+
+  &.secondary {
+    padding: 10px;
+    width: 15vw;
+    background: #000;
+    color: #fff;
+  }
+}
+
+@media screen and (max-width: 1110px) {
+  .base {
+    font-size: 15px;
+    width: 50vw;
+    max-width: 200px;
+
+    &.primary {
+      height: 30px;
+      width: 15vw;
+      margin: 5px auto;
+    }
+
+    &.secondary {
+      background: #000;
+      color: #fff;
+      padding: 70px;
+      width: 15vw;
+    }
+  }
+}
+
+@media screen and (max-width: 610px) {
+  .base {
+    font-size: 12px;
+  }
+}
